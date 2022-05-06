@@ -4,9 +4,12 @@ const html = `
   <i>Satisfying CSS web browser defaults, only changing fonts</i>
   <h1>Hello world!</h1>
   <p>Made by Cha Haneum</p>
+  <ul class="test">
+    <li class="hello">Hello</li>
+  </ul>
 `;
-// let time;
-// console.time(time);
+let time;
+console.time(time);
 const createElementConverter = (target, content, className) => {
   const elem = document.createElement(target);
   if (!(className === null)) {
@@ -53,4 +56,4 @@ const converter = (content) => {
   }
 };
 converter(html);
-// console.timeEnd(time);
+console.timeEnd(time);
