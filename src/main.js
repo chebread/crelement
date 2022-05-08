@@ -1,26 +1,104 @@
 const root = document.querySelector('#root');
 const log = console.log;
 const crelement = content => {
-  let data = content.split('\n\n');
-  data
-    .map(
-      a =>
-        (root.innerHTML += `<p>${a
+  // const ab = data[0].split('\n');
+  // const abc = ab.filter(Boolean);
+  // log(abc[0].substring(2, abc[0].length));
+  // content
+  //   .split('\n\n')
+  //   .map(a => {
+  //     log(a.split('\n').filter(Boolean));
+  //   })
+  // .join('');
+  content
+    .split('\n\n')
+    .map(a => {
+      if (!(a.split('\n').filter(Boolean)[0].indexOf('<p') === -1)) {
+        root.innerHTML += a
           .split('\n')
           .filter(Boolean)
-          .map(c => `${c}<br/>`)
-          .join('')}</p>`)
-    )
+          .map(
+            b =>
+              `${
+                !(
+                  a.split('\n').filter(Boolean)[
+                    a.split('\n').filter(Boolean).length - 1
+                  ] === b
+                )
+                  ? `${b.substring(2, b.length)}<br/>`
+                  : `${b.substring(2, b.length)}`
+              }`
+          )
+          .join('');
+      } else {
+        root.innerHTML += `<p>${a
+          .split('\n')
+          .filter(Boolean)
+          .map(b =>
+            !(
+              a.split('\n').filter(Boolean)[
+                a.split('\n').filter(Boolean).length - 1
+              ] === b
+            )
+              ? `${b.substring(2, b.length)}<br/>`
+              : `${b.substring(2, b.length)}`
+          )
+          .join('')}</p>`;
+      }
+    })
     .join('');
+  // content
+  //   .split('\n\n')
+  //   .map(a => {
+  //     if (!(a.split('\n').filter(Boolean)[0].indexOf('<p') === -1)) {
+  //       a.split('\n')
+  //         .filter(Boolean)
+  //         .map(
+  //           b =>
+  //             `${
+  //               !(
+  //                 a.split('\n').filter(Boolean)[
+  //                   a.split('\n').filter(Boolean).length - 1
+  //                 ] === b
+  //               )
+  //                 ? `${b.substring(2, b.length)}<br/>`
+  //                 : `${b.substring(2, b.length)}`
+  //             }`
+  //         )
+  //         .join('');
+  //     } else {
+  //       root.innerHTML += `<p>${a
+  //         .split('\n')
+  //         .filter(Boolean)
+  //         .map(b =>
+  //           !(
+  //             a.split('\n').filter(Boolean)[
+  //               a.split('\n').filter(Boolean).length - 1
+  //             ] === b
+  //           )
+  //             ? `${b.substring(2, b.length)}<br/>`
+  //             : `${b.substring(2, b.length)}`
+  //         )
+  //         .join('')}</p>`;
+  //     }
+  //   })
+  //   .join('');
+  // content
+  //   .split('\n\n')
+  //   .map(a => {
+  //     a.split('\n')
+  //       .filter(Boolean)
+  //       .map(b => {
+  //         log(b.substring(2, b.length));
+  //       });
+  //   })
+  //   .join('');
 };
 
 const htmlTemplete = `
-안녕햐세요
-반갑고요
+  <p>hello</p>
+  hellox
 
-네네 그럽시다. 하.
-이런
-
-우와!
+  sdf
 `;
 crelement(htmlTemplete);
